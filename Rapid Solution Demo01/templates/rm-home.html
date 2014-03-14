@@ -1,0 +1,47 @@
+<view title="'Rapid Solution Demo'">
+
+<!--    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Search" ng-model="searchKey" autocorrect="off" >
+            <button class="button button-clear" ng-click="clearSearch()">X</button>
+        </label>
+        <button class="button button-clear" ng-click="search()">Search</button>
+    </div>-->
+
+<!--    <content has-header="true" has-subheader="true">
+        <list>
+            <item ng-repeat="employee in employees" type="item-text-wrap" href="#/rm-home/{{employee.id}}">
+                <h3>{{employee.name}}</h3>
+                <p>{{employee.count}}</p>
+            </item>
+            
+        </list>
+    </content>-->
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+            <list>
+
+            <a ng-repeat="rmmenu in rmlists" class="item item-avatar" href="#/rm-home/{{rmmenu.id}}">
+                <img src="pics/poa.jpg">
+                <h2>{{rmmenu.name}}</h2>
+                <p>{{rmmenu.count}}</p>
+            </a>
+
+            </list>
+
+        </div>
+    </content>
+    <div class="tabs tabs-icon-only">
+        <a class="tab-item">
+            <i class="icon ion-home"></i>
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-star"></i>
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-gear-a"></i>
+        </a>
+    </div>
+
+</view>

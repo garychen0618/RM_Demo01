@@ -1,0 +1,160 @@
+<!--po query page-->
+<view ng-show="page_po_query" title="P_Title">
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Release Code</span>
+            <input type="text" ng-model="po_rel.REL_CODE">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Release Group</span>
+            <input type="text" ng-model="po_rel.REL_GROUP">
+          </label>
+          <button class="button button-balanced button-full button-positive" ng-click="POQuery()">
+              Search
+          </button>
+        </div>
+    </content>
+    <div class="tabs tabs-icon-left">
+        <a class="tab-item" href="#">
+            <i class="icon ion-arrow-return-left"></i>Back
+        </a>
+    </div>
+</view>
+
+<!--po list page-->
+<view ng-show="page_po_list" title="P_Title" >
+    <content has-header="true" has-subheader="false">
+        <!--<pre>{{PurchaseOrders | json}}</pre>-->
+        <div class="list">
+            <a ng-repeat="po in PurchaseOrders.PO_HEADERS" class="item item-avatar" ng-click="DisplayPO($index)">
+                <!--<img src="venkman.jpg">-->
+                <h2>{{$index}} / {{po.PO_NUMBER}} / {{po.CREATED_ON}}</h2>
+                <p>{{po.VENDOR}}</p>
+                <p>{{po.TARGET_VAL}}{{po.CURRENCY}}</p>
+            </a>
+        </div>
+    </content>
+    <div class="tabs tabs-icon-left">
+        <a class="tab-item">
+            <i class="icon ion-arrow-return-left" ng-click="Back1()"></i>Back
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-gear-a"></i>Setting
+        </a>
+    </div>
+</view>
+
+<!--po Item list page-->
+<view ng-show="page_po_item_list" title="P_Title" >
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+            <div class="item item-divider">
+                PO Header:
+            </div>
+            <li class="item">
+                PO_NUMBER:  {{po.PO_NUMBER}}
+            </li>
+            <li class="item">
+                <i>CREATED_ON: </i>{{po.CREATED_ON}}
+            </li>
+            <li class="item">
+                <i>CREATED_BY: </i>{{po.CREATED_BY}}
+            </li>
+            <li class="item">
+                <i>VENDOR: </i>{{po.VENDOR}}
+            </li>
+            <li class="item">
+                <i>VEND_NAME: </i>{{po.VEND_NAME}}
+            </li>
+            <li class="item">
+                <i>CURRENCY: </i>{{po.CURRENCY}}
+            </li>
+            <li class="item">
+                <i>CO_CODE: </i>{{po.CO_CODE}}
+            </li>
+            <li class="item">
+                <i>PURCH_ORG: </i>{{po.PURCH_ORG}}
+            </li>
+            <li class="item">
+                <i>PUR_GROUP: </i>{{po.PUR_GROUP}}
+            </li>
+            <li class="item">
+                <i>PMNTTRMS: </i>{{po.PMNTTRMS}}
+            </li>
+            <li class="item">
+                <i>EXCH_RATE: </i>{{po.EXCH_RATE}}
+            </li>
+            <div class="item item-divider">
+                PO Items:
+            </div>
+            <a class="item" ng-repeat="poItem in po.PO_ITEMS" ng-click="DisplayPOItem($index)">
+                <h2>[{{$index}}]  {{poItem.PO_ITEM}}/{{poItem.PUR_MAT}} {{poItem.SHORT_TEXT}}</h2>
+                <p>{{poItem.DISP_QUAN}} {{poItem.ORDERPR_UN}} * {{poItem.NET_PRICE}}{{po.CURRENCY}}</p>
+                <p>{{poItem.NET_PRICE * poItem.DISP_QUAN}}{{po.CURRENCY}}</p>
+            </a>
+        </div>
+    </content>
+    
+    <div class="tabs tabs-icon-left">
+        <a class="tab-item">
+            <i class="icon ion-arrow-return-left" ng-click="Back2()"></i>Back
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-checkmark-round" ng-click="ApprovePO(po_index)"></i>Approve
+        </a>
+    </div>
+</view>
+
+<!--po Item Detail-->
+<view ng-show="page_po_item_detail" title="P_Title" >
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+            <div class="item item-divider">
+                PO Item:
+            </div>
+            <li class="item">
+                PO_NUMBER:  {{poItem.PO_NUMBER}}
+            </li>
+            <li class="item">
+                <i>PO_ITEM: </i>{{poItem.PO_ITEM}}
+            </li>
+            <li class="item">
+                <i>MATERIAL: </i>{{poItem.PUR_MAT}}
+            </li>
+            <li class="item">
+                <i>SHORT_TEXT: </i>{{poItem.SHORT_TEXT}}
+            </li>
+            <li class="item">
+                <i>MAT_GRP: </i>{{poItem.MAT_GRP}}
+            </li>
+            <li class="item">
+                <i>DISP_QUAN: </i>{{poItem.DISP_QUAN}}
+            </li>
+            <li class="item">
+                <i>STORE_LOC: </i>{{poItem.STORE_LOC}}
+            </li>
+            <li class="item">
+                <i>NET_PRICE: </i>{{poItem.NET_PRICE}}
+            </li>
+            <li class="item">
+                <i>PRICE_UNIT: </i>{{poItem.PRICE_UNIT}}
+            </li>
+            <li class="item">
+                <i>PLANT: </i>{{poItem.PLANT}}
+            </li>
+            <li class="item">
+                <i>UNIT: </i>{{poItem.UNIT}}
+            </li>
+        </div>
+    </content>
+    <div class="tabs tabs-icon-left">
+        <a class="tab-item">
+            <i class="icon ion-arrow-return-left" ng-click="page_po_item_detail=false;page_po_item_list=true"></i>Back
+        </a>
+        <a class="tab-item">
+            <i class="icon ion-gear-a"></i>Setting
+        </a>
+    </div>
+</view>
+

@@ -1,0 +1,33 @@
+<view title="'Device Information'">
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+            <div class="item item-divider">
+    			Device	
+  			</div>
+            <li class="item">
+                Name:  {{device.name}}
+            </li>
+            <li class="item">
+                Model:  {{device.model}}
+            </li>
+            <li class="item">
+                UUID:  {{device.uuid}}
+            </li>
+            <li class="item">
+                Cordova:  {{device.cordova}}
+            </li>
+            <li class="item">
+                Platform:  {{device.platform}}
+            </li>
+            <li class="item">
+                Version:  {{device.version}}
+            </li>
+            <div class="item item-divider">
+    			Connection	
+  			</div>
+            <li class="item">
+                {{connection}}
+            </li>
+        </div>
+    </content>
+</view>
