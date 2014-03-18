@@ -34,8 +34,32 @@ angular.module('rmApp.controllers', [])
     
 	.controller('PRACtroller', function($scope, RMFactory){
         $scope.device = device;
-        alert('aa');
-        alert(navigator.connection.type);
+        //alert('aa');
+        $scope.connection =[];
+        $scope.connection = navigator.connection.type;
+        //alert(navigator.connection.type);
+     })
+
+	.controller('TEACtroller', function($scope, RMFactory){
+        $scope.testes = RMFactory.test.query();
+     })
+	
+	.controller('SETCtroller', function($scope, RMFactory){
+        $scope.device = device;
+        //alert('aa');
+        var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+        var networkState = navigator.connection.type;
+        $scope.connection = states[networkState];
+        $scope.connect_time = new Date().toLocaleTimeString().split(" ")[0];
+        //alert(navigator.connection.type);
      })
 
     .controller('POACtroller', function($scope, RMFactory){
@@ -62,6 +86,7 @@ angular.module('rmApp.controllers', [])
                 if(PurchaseOrders.RETURN[0].TYPE == 'E')
                 {
                     alert('No PO Number exist!');
+                    //navigator.notification.alert('No PO Number exist!');
                     $scope.page_po_query = "true";
                     $scope.page_po_list = "false";
                     $scope.P_Title = "PO Search";

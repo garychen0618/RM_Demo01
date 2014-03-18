@@ -37,6 +37,18 @@ angular.module('rmApp', ['ionic', 'rmApp.services', 'rmApp.controllers'])
                 templateUrl: 'templates/pra.html',
                 controller: 'PRACtroller'
             })
+        
+        	.state('tea', {
+                url: '/rm-home/tea',
+                templateUrl: 'templates/tea.html',
+                controller: 'TEACtroller'
+            })
+        
+        	.state('setting', {
+                url: '/rm-home/setting',
+                templateUrl: 'templates/setting.html',
+                controller: 'SETCtroller'
+            })
 
             .state('employee-reports', {
                 url: '/employee/:employeeId/reports',

@@ -11,7 +11,11 @@ angular.module('rmApp.services', ['ngResource'])
                 query: {method: 'GET', isArray: true}
 
             }),
-             getplist: $resource('http://10.58.79.222:8080/MerpConsole/MerpServlet?:p_bapi_param', {}, {
+            test: $resource('http://api.everlive.com/v1/FrJpUatB0N9yp35W/rm_apps', {}, {
+                query: {method: 'GET', isArray: true}
+
+            }),
+            getplist: $resource('http://10.58.79.222:8080/MerpConsole/MerpServlet?:p_bapi_param', {}, {
                 query: {method: 'GET', params: {p_bapi_param: ''}}
             }),
             gettlist: $resource('http://10.58.79.222:8080/MerpConsole/MerpServlet?:p_bapi_param', {p_bapi_param:'@p_bapi_param'}, {
