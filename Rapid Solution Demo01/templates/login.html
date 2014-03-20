@@ -1,0 +1,16 @@
+<view title="'Login'">
+    <content has-header="true" has-subheader="false">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="user.user_name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+        </div>
+        <button class="button button-block button-positive" ng-click="CheckIn()">Sign In</button>
+        <div style="text-align:center"><a href="#/home/create">Don't have an account?</a></div>
+    </content>
+</view>
