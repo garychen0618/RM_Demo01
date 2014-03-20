@@ -14,6 +14,18 @@ angular.module('rmApp', ['ionic', 'rmApp.services', 'rmApp.controllers'])
         // Each state's controller can be found in controllers.js
         $stateProvider
 
+            .state('home', {
+                url: '/home',
+                templateUrl: 'templates/login.html',
+                controller: 'CheckInCtrl'
+            })
+            
+            .state('create', {
+                url: '/home/create',
+                templateUrl: 'templates/create.html',
+                controller: 'CreateAccountCtrl'
+            })
+            
             .state('rm-home', {
                 url: '/rm-home',
                 templateUrl: 'templates/rm-home.html',
@@ -38,25 +50,45 @@ angular.module('rmApp', ['ionic', 'rmApp.services', 'rmApp.controllers'])
                 controller: 'PRACtroller'
             })
         
-        	.state('tea', {
-                url: '/rm-home/tea',
-                templateUrl: 'templates/tea.html',
-                controller: 'TEACtroller'
-            })
+//        	.state('tea', {
+//                url: '/rm-home/tea',
+//                templateUrl: 'templates/tea.html',
+//                controller: 'TEACtroller'
+//            })
         
         	.state('setting', {
                 url: '/rm-home/setting',
                 templateUrl: 'templates/setting.html',
                 controller: 'SETCtroller'
             })
-
-            .state('employee-reports', {
-                url: '/employee/:employeeId/reports',
-                templateUrl: 'templates/employee-reports.html',
-                controller: 'EmployeeReportsCtrl'
-            });
+            
+            .state('userinfo', {
+                url: '/rm-home/userinfo',
+                templateUrl: 'templates/userinfo.html'
+                //controller: 'UserInfoCtroller'
+            })
+            .state('retrieve', {
+                url: '/rm-home/userinfo/retrieve',
+                templateUrl: 'templates/retrieve.html'
+                //controller: 'UserInfoCtroller'
+            })
+            .state('update', {
+                url: '/rm-home/userinfo/update',
+                templateUrl: 'templates/update.html'
+                //controller: 'UserInfoCtroller'
+            })
+            .state('change', {
+                url: '/rm-home/userinfo/change',
+                templateUrl: 'templates/change.html'
+                //controller: 'UserInfoCtroller'
+            })
+//            .state('employee-reports', {
+//                url: '/employee/:employeeId/reports',
+//                templateUrl: 'templates/employee-reports.html',
+//                controller: 'EmployeeReportsCtrl'
+//            });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/rm-home');
+        $urlRouterProvider.otherwise('/home');
 
     });

@@ -22,10 +22,10 @@
         <div class="list">
             <list>
 
-            <a ng-repeat="rmmenu in rmlists" class="item item-avatar" href="#/rm-home/{{rmmenu.id}}">
-                <img src="pics/poa.jpg">
-                <h2>{{rmmenu.name}}</h2>
-                <p>{{rmmenu.count}}</p>
+            <a ng-repeat="rmmenu in rmlists.Result" class="item item-avatar" href="#/rm-home/{{rmmenu.app_id}}">
+                <img src="pics/poa.jpg" alt="{{rmmenu.app_id}}">
+                <h2>{{rmmenu.app_name}}</h2>
+                <p>{{rmmenu.app_count}}</p>
             </a>
 
             </list>
@@ -36,7 +36,7 @@
         <a class="tab-item">
             <i class="icon ion-home"></i>
         </a>
-        <a class="tab-item">
+        <a class="tab-item" href="#/rm-home/userinfo">
             <i class="icon ion-star"></i>
         </a>
         <a class="tab-item" href="#/rm-home/setting">
